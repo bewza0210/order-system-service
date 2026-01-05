@@ -41,7 +41,7 @@ const controller = new OrderController();
  *                 type: string
  *                 format: uuid
  *                 description: Foreign Key reference to User. Get from seed or list users endpoint
- *                 example: 550e8400-e29b-41d4-a716-446655440000
+ *                 example: d48e6a8b-2711-4bb3-95bb-a8f995ff52e8
  *               items:
  *                 type: array
  *                 minItems: 1
@@ -56,7 +56,7 @@ const controller = new OrderController();
  *                       type: string
  *                       format: uuid
  *                       description: Foreign Key reference to Product. Get from seeded products
- *                       example: 550e8400-e29b-41d4-a716-446655440001
+ *                       example: 7d5c7e45-7a54-4cdf-b90f-a314019d319a
  *                     quantity:
  *                       type: integer
  *                       minimum: 1

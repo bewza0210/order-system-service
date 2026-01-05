@@ -1,6 +1,6 @@
 import { AppDataSource } from '../config/database';
 import { redisClient } from '../config/redis';
-import { publishToExchange } from '../config/rabbitmq';
+import { publishToQueue } from '../config/rabbitmq';
 import { Order, OrderStatus, OrderItem, EventLog, EventType, Product, User } from '../entities';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -132,17 +132,17 @@ export class OrderService {
 
       // 7. Publish event to RabbitMQ (after transaction commits)
       try {
-        await publishToExchange('order_events', 'order.created', {
+        await publishToQueue('order_events', {
           orderId: savedOrder.id,
           userId: data.userId,
           referenceNo,
           totalPrice,
           items: data.items,
           timestamp: new Date().toISOString(),
-        }, {}, 'topic');
-        console.log(`✅ Order event published: ${savedOrder.id}`);
+        });
+        console.log(`✅ Order event published to queue: ${savedOrder.id}`);
       } catch (err) {
-        console.error('Warning: Failed to publish order event:', err);
+        console.error('Warning: Failed to publish order event to queue:', err);
         // Don't fail the order creation if event publishing fails
       }
 
