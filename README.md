@@ -58,16 +58,25 @@ It simulates a high-traffic scenario where multiple users purchase products simu
 
 ## Tech Stack
 
-| Component | Technology |
-|-----------|-----------|
-| **Backend** | Express.js + TypeScript |
-| **Database** | PostgreSQL |
-| **Cache** | Redis |
-| **Message Broker** | RabbitMQ |
-| **ORM** | TypeORM |
-| **Testing** | Jest + k6 |
-| **Container** | Docker (optional) |
-| **CI/CD** | GitHub Actions |
+This project is intentionally small, pragmatic, and built with technologies that are easy to iterate with for a side project. Below is a quick reference of the main technologies and why they were chosen.
+
+- **Backend:** Express.js + TypeScript — lightweight, well-known, and type-safe for faster development.
+- **Database:** PostgreSQL (configurable) — reliable relational DB for transactional integrity.
+- **ORM:** TypeORM — Developer-friendly ORM integrated with TypeScript entities.
+- **Cache:** Redis — in-memory cache for fast reads and atomic operations (locks and TTLs).
+- **Message Broker:** RabbitMQ — reliable message delivery and decoupled async processing.
+- **Validation:** Joi — declarative request validation with helpful error messages.
+- **Testing:** Jest (unit) + optional k6 (load testing) — correctness and concurrency testing.
+- **Docs:** Swagger (swagger-ui-express + swagger-jsdoc) — interactive API docs at `/api-docs`.
+- **Containerization (optional):** Docker & Docker Compose — for easy local infra setup.
+- **CI/CD:** GitHub Actions — run tests and build on every push.
+
+Why this stack for a side project:
+
+- Familiar tooling (Express, TypeScript) keeps iteration velocity high.
+- Redis + RabbitMQ let you prototype real-world concurrency and event-driven patterns without heavy ops.
+- TypeORM keeps entity definitions compact and easy to evolve as the data model changes.
+
 
 ## Architecture
 
